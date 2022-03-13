@@ -1,0 +1,287 @@
+168 245 247 252 33 129 195 29 174 12 72 188 254 227 116 10 156 124 154 75 227 62 234 27 93 46 225 185 80 8 117 100 
+I (367) rnd_test: 
+			Parameters config
+
+I (367) rnd_test: 		--------------------------------------------
+
+I (377) rnd_test: 		  blockFrequencyBlockLen = 128
+
+I (387) rnd_test: 		  nonOverlappingTemplateLen = 10
+
+I (387) rnd_test: 		  OverlappingTemplateLen = 10
+
+I (397) rnd_test: 		  linearComplexityBlockLen = 500
+
+I (397) rnd_test: 		  serialBlockLen = 4
+
+I (407) rnd_test: 		  approximateEntropyBlockLen = 10
+
+I (407) rnd_test: 
+
+I (417) frequency.c: 			      FREQUENCY TEST
+
+I (417) frequency.c: 		---------------------------------------------
+
+I (427) frequency.c: 		COMPUTATIONAL INFORMATION:
+
+I (437) frequency.c: 		---------------------------------------------
+
+I (437) frequency.c: 		(a) The nth partial sum = 6
+
+I (447) frequency.c: 		(b) S_n/n               = 0.023438
+
+I (447) frequency.c: 		---------------------------------------------
+
+I (457) frequency.c: SUCCESS		p_value = 0.707660
+
+
+I (467) rnd_test: 
+
+I (467) blockFrequency.c: 			BLOCK FREQUENCY TEST
+
+I (477) blockFrequency.c: 		---------------------------------------------
+
+I (477) blockFrequency.c: 		COMPUTATIONAL INFORMATION:
+
+I (487) blockFrequency.c: 		---------------------------------------------
+
+I (497) blockFrequency.c: 		(a) Chi^2           = 0.156250
+
+I (497) blockFrequency.c: 		(b) # of substrings = 2
+
+I (507) blockFrequency.c: 		(c) block length    = 128
+
+I (517) blockFrequency.c: 		(d) Note: 0 bits were discarded.
+
+I (517) blockFrequency.c: 		---------------------------------------------
+
+I (527) blockFrequency.c: SUCCESS		p_value = 0.924849
+
+
+I (537) rnd_test: 
+
+I (537) runs.c: 				RUNS TEST
+
+I (537) runs.c: 		------------------------------------------
+
+I (547) runs.c: 		COMPUTATIONAL INFORMATION:
+
+I (547) runs.c: 		------------------------------------------
+
+I (557) runs.c: 		(a) Pi                        = 0.511719
+
+I (567) runs.c: 		(b) V_n_obs (Total # of runs) = 120
+
+I (567) runs.c: 		(c) V_n_obs - 2 n pi (1-pi)
+
+I (577) runs.c: 		    -----------------------   = 0.701277
+
+I (577) runs.c: 		      2 sqrt(2n) pi (1-pi)
+
+I (587) runs.c: 		------------------------------------------
+
+I (597) runs.c: SUCCESS		p_value = 0.321317
+
+
+I (597) rnd_test: 
+
+I (597) longestRunOfOnes.c: 			  LONGEST RUNS OF ONES TEST
+
+I (607) longestRunOfOnes.c: 		---------------------------------------------
+
+I (617) longestRunOfOnes.c: 		COMPUTATIONAL INFORMATION:
+
+I (617) longestRunOfOnes.c: 		---------------------------------------------
+
+I (627) longestRunOfOnes.c: 		(a) N (# of substrings)  = 32
+
+I (637) longestRunOfOnes.c: 		(b) M (Substring Length) = 8
+
+I (637) longestRunOfOnes.c: 		(c) Chi^2                = 5.881893
+
+I (647) longestRunOfOnes.c: 		---------------------------------------------
+
+I (657) longestRunOfOnes.c: 		      F R E Q U E N C Y
+
+I (667) longestRunOfOnes.c: 		---------------------------------------------
+
+I (667) longestRunOfOnes.c: 		  <=1     2     3    >=4   P-value  Assignment
+I (677) longestRunOfOnes.c: 
+		   7   6  12    7 
+I (687) longestRunOfOnes.c: 
+SUCCESS		p_value = 0.117500
+
+
+I (687) rnd_test: 
+
+I (697) rank.c: 				RANK TEST
+
+I (697) rank.c: 		---------------------------------------------
+
+I (707) rank.c: 		Error: Insuffucient # Of Bits To Define a (32 x 32) Matrix
+
+I (707) rnd_test: 
+
+I (717) discreteFourierTransform.c: 				FFT TEST
+
+I (717) discreteFourierTransform.c: 		---------------------------------------------
+
+I (727) discreteFourierTransform.c: 		   n=256 is too short
+
+I (737) rnd_test: 
+
+I (737) nonOverlappingTemplateMatchings.c: 		  NON-OVERLAPPING TEMPLATES MATCHINGS TEST
+
+I (747) nonOverlappingTemplateMatchings.c: -------------------------------------------------------------------------------------
+
+I (757) nonOverlappingTemplateMatchings.c: 	Error: Template file <templates/template10> not existing
+
+I (767) rnd_test: 
+
+I (767) overlappingTemplateMatchings.c: 		    OVERLAPPING TEMPLATE OF ALL ONES TEST
+
+I (777) overlappingTemplateMatchings.c: 		---------------------------------------------
+
+I (787) overlappingTemplateMatchings.c: 		Error: n=256 is too short
+
+I (797) rnd_test: 
+
+I (797) rnd_test: 
+
+I (797) linearComplexity.c: 			  LINEAR COMPLEXITY TEST
+
+I (807) linearComplexity.c: 		---------------------------------------------
+
+I (817) linearComplexity.c: 		   n = 256 is too short
+
+I (817) rnd_test: 
+
+I (827) serial.c: 		       SERIAL TEST
+
+I (827) serial.c: 		---------------------------------------------
+
+I (837) serial.c: 		 COMPUTATIONAL INFORMATION:		  
+
+I (837) serial.c: 		---------------------------------------------
+
+I (847) serial.c: 		(a) Block length    (m) = 4
+
+I (857) serial.c: 		(b) Sequence length (n) = 256
+
+I (857) serial.c: 		(c) Psi_m               = 7.250000
+
+I (867) serial.c: 		(d) Psi_m-1             = 3.437500
+
+I (867) serial.c: 		(e) Psi_m-2             = 1.281250
+
+I (877) serial.c: 		(f) Del_1               = 3.812500
+
+I (887) serial.c: 		(g) Del_2               = 1.656250
+
+I (887) serial.c: 		---------------------------------------------
+
+I (897) serial.c: SUCCESS		p_value1 = 0.873632
+
+I (897) serial.c: SUCCESS		p_value2 = 0.798649
+
+
+I (907) rnd_test: 
+
+I (907) approximateEntropy.c: 			APPROXIMATE ENTROPY TEST
+
+I (917) approximateEntropy.c: 		--------------------------------------------
+
+I (927) approximateEntropy.c: 		Note: The blockSize = 10 exceeds recommended value of 3
+
+I (937) approximateEntropy.c: 		Results are inaccurate!
+
+I (937) rnd_test: 
+
+I (937) cumulativeSums.c: 		      CUMULATIVE SUMS (FORWARD) TEST
+
+I (947) cumulativeSums.c: 		-------------------------------------------
+
+I (957) cumulativeSums.c: 		COMPUTATIONAL INFORMATION:
+
+I (967) cumulativeSums.c: 		-------------------------------------------
+
+I (967) cumulativeSums.c: 		(a) The maximum partial sum = 17
+
+I (977) cumulativeSums.c: 		-------------------------------------------
+
+I (987) cumulativeSums.c: SUCCESS		p_value = 0.573148
+
+
+I (997) cumulativeSums.c: 		      CUMULATIVE SUMS (REVERSE) TEST
+
+I (997) cumulativeSums.c: 		-------------------------------------------
+
+I (1007) cumulativeSums.c: 		COMPUTATIONAL INFORMATION:
+
+I (1007) cumulativeSums.c: 		-------------------------------------------
+
+I (1017) cumulativeSums.c: 		(a) The maximum partial sum = 11
+
+I (1027) cumulativeSums.c: 		-------------------------------------------
+
+I (1027) cumulativeSums.c: SUCCESS		p_value = 0.906386
+
+
+I (1037) rnd_test: 
+
+I (1037) randomExcursions.c: 			  RANDOM EXCURSIONS TEST
+
+I (1047) randomExcursions.c: 		--------------------------------------------
+
+I (1057) randomExcursions.c: 		Error: The minimal input length in bits is 1000000!
+
+I (1067) rnd_test: 
+
+I (1067) randomExcursionsVariant.c: 			RANDOM EXCURSIONS VARIANT TEST
+
+I (1077) randomExcursionsVariant.c: 		--------------------------------------------
+
+I (1077) randomExcursionsVariant.c: 		Error: The minimal input length in bits is 1000000!
+
+I (1087) rnd_test: 
+
+			Randomness Test Result:
+
+I (1097) rnd_test: 	-------------------------------------------
+
+I (1107) rnd_test: 	 1. Frequency test:                          Success
+
+I (1107) rnd_test: 	 2. Block Frequency test:                    Success
+
+I (1117) rnd_test: 	 3. Runs test:                               Success
+
+I (1127) rnd_test: 	 4. Longest Run Of Ones test:                Success
+
+I (1137) rnd_test: 	 5. Matrix Rank test:                        Failure
+
+I (1137) rnd_test: 	 6. Discrete Fourier Transform test:         Failure
+
+I (1147) rnd_test: 	 7. Non-Overlapping Template Matchings test: Failure
+
+I (1157) rnd_test: 	 8. Overlapping Template Matchings test:     Failure
+
+I (1167) rnd_test: 	 9. Universal test:                          Failure
+
+I (1167) rnd_test: 	10. Linear Complexity test:                  Failure
+
+I (1177) rnd_test: 	11. Serial test:                             Success
+
+I (1187) rnd_test: 	12. Approximate Entropy test:                Failure
+
+I (1197) rnd_test: 	13. Cumulative Sums test:                    Success
+
+I (1197) rnd_test: 	14. Random Excursions test:                  Failure
+
+I (1207) rnd_test: 	15. randomExcursionsVariant test:            Failure
+
+I (1217) rnd_test: 	---------------------------------------------
+
+I (1227) rnd_test: 			Summarization:
+
+I (1227) rnd_test: 		Pass rate = 40.0000%
+
