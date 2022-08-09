@@ -42,7 +42,7 @@ void convertToBitArray(const unsigned char *input,
  *  0:                test passes
     any other value:  an error occurs
  ************************************************/
-int randomnessTest(unsigned char *input, int inputLen, int errorCode[]);
+int randomnessTest(unsigned char *input, int inputLen, int errorCode[], FILE* logfd);
 
 #ifdef  __cplusplus
 }

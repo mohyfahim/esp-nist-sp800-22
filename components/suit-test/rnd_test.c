@@ -62,7 +62,7 @@ void convertToBitArray(const unsigned char *input,
     }
 }
 
-int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
+int randomnessTest(unsigned char *input, int inputLen, int errorCode[], FILE* logfd)
 {
 
     int testResult[15], bitStreamLen, passItemCount;
@@ -97,22 +97,22 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     approximateEntropyBlockLen = 10;
 
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n\t\t\tParameters config\n");
-    ESP_LOGI(TAG, "\t\t--------------------------------------------\n");
-    ESP_LOGI(TAG, "\t\t  blockFrequencyBlockLen = %d\n", blockFrequencyBlockLen);
-    ESP_LOGI(TAG, "\t\t  nonOverlappingTemplateLen = %d\n", nonOverlappingTemplateLen);
-    ESP_LOGI(TAG, "\t\t  OverlappingTemplateLen = %d\n", OverlappingTemplateLen);
-    ESP_LOGI(TAG, "\t\t  linearComplexityBlockLen = %d\n", linearComplexityBlockLen);
-    ESP_LOGI(TAG, "\t\t  serialBlockLen = %d\n", serialBlockLen);
-    ESP_LOGI(TAG, "\t\t  approximateEntropyBlockLen = %d\n", approximateEntropyBlockLen);
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n\t\t\tParameters config\n");
+    fprintf(logfd, "\t\t--------------------------------------------\n");
+    fprintf(logfd, "\t\t  blockFrequencyBlockLen = %d\n", blockFrequencyBlockLen);
+    fprintf(logfd, "\t\t  nonOverlappingTemplateLen = %d\n", nonOverlappingTemplateLen);
+    fprintf(logfd, "\t\t  OverlappingTemplateLen = %d\n", OverlappingTemplateLen);
+    fprintf(logfd, "\t\t  linearComplexityBlockLen = %d\n", linearComplexityBlockLen);
+    fprintf(logfd, "\t\t  serialBlockLen = %d\n", serialBlockLen);
+    fprintf(logfd, "\t\t  approximateEntropyBlockLen = %d\n", approximateEntropyBlockLen);
+    fprintf(logfd, "\n");
 #endif
 
     bitStreamLen = inputLen * 8;
     if (!(bitStream = (unsigned char *)INTERNAL_MALLOC(bitStreamLen)))
     {
 #ifdef INTERNAL_DEBUG
-        ESP_LOGI(TAG, "Memory allocation failed!\n");
+        fprintf(logfd, "Memory allocation failed!\n");
 #endif
         return MEMORY_ALLOCATION_FAIL;
     }
@@ -131,7 +131,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = BlockFrequency(bitStream,
@@ -144,7 +144,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = Runs(bitStream, bitStreamLen)))
@@ -155,7 +155,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = LongestRunOfOnes(bitStream, bitStreamLen)))
@@ -166,7 +166,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = Rank(bitStream, bitStreamLen)))
@@ -177,7 +177,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = DiscreteFourierTransform(bitStream, bitStreamLen)))
@@ -188,7 +188,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = NonOverlappingTemplateMatchings(bitStream,
@@ -201,7 +201,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = OverlappingTemplateMatchings(bitStream,
@@ -214,7 +214,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = Universal(bitStream, bitStreamLen)))
@@ -225,7 +225,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = LinearComplexity(bitStream,
@@ -238,7 +238,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = Serial(bitStream,
@@ -251,7 +251,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = ApproximateEntropy(bitStream,
@@ -263,7 +263,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = CumulativeSums(bitStream, bitStreamLen)))
@@ -274,7 +274,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = RandomExcursions(bitStream, bitStreamLen)))
@@ -285,7 +285,7 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     rndTestItem++;
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\n");
+    fprintf(logfd, "\n");
 #endif
 
     if ((testResult[rndTestItem] = RandomExcursionsVariant(bitStream, bitStreamLen)))
@@ -297,37 +297,37 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
 
 #ifdef INTERNAL_DEBUG
     rndTestItem = frequencyFlag;
-    ESP_LOGI(TAG, "\n\n\t\t\tRandomness Test Result:\n");
-    ESP_LOGI(TAG, "\t-------------------------------------------\n");
-    ESP_LOGI(TAG, "\t 1. Frequency test:                          %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\n\n\t\t\tRandomness Test Result:\n");
+    fprintf(logfd, "\t-------------------------------------------\n");
+    fprintf(logfd, "\t 1. Frequency test:                          %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 2. Block Frequency test:                    %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 2. Block Frequency test:                    %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 3. Runs test:                               %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 3. Runs test:                               %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 4. Longest Run Of Ones test:                %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 4. Longest Run Of Ones test:                %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 5. Matrix Rank test:                        %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 5. Matrix Rank test:                        %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 6. Discrete Fourier Transform test:         %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 6. Discrete Fourier Transform test:         %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 7. Non-Overlapping Template Matchings test: %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 7. Non-Overlapping Template Matchings test: %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 8. Overlapping Template Matchings test:     %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 8. Overlapping Template Matchings test:     %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t 9. Universal test:                          %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t 9. Universal test:                          %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t10. Linear Complexity test:                  %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t10. Linear Complexity test:                  %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t11. Serial test:                             %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t11. Serial test:                             %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t12. Approximate Entropy test:                %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t12. Approximate Entropy test:                %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t13. Cumulative Sums test:                    %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t13. Cumulative Sums test:                    %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t14. Random Excursions test:                  %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t14. Random Excursions test:                  %s\n", testResult[rndTestItem] ? "Failure" : "Success");
     rndTestItem++;
-    ESP_LOGI(TAG, "\t15. randomExcursionsVariant test:            %s\n", testResult[rndTestItem] ? "Failure" : "Success");
+    fprintf(logfd, "\t15. randomExcursionsVariant test:            %s\n", testResult[rndTestItem] ? "Failure" : "Success");
 #endif
 
     passItemCount = 0;
@@ -340,9 +340,9 @@ int randomnessTest(unsigned char *input, int inputLen, int errorCode[])
     }
     passRate = (double)(passItemCount) / (sizeof(testResult) / sizeof(int));
 #ifdef INTERNAL_DEBUG
-    ESP_LOGI(TAG, "\t---------------------------------------------\n");
-    ESP_LOGI(TAG, "\t\t\tSummarization:\n");
-    ESP_LOGI(TAG, "\t\tPass rate = %.4f%%\n", (passRate * 100));
+    fprintf(logfd, "\t---------------------------------------------\n");
+    fprintf(logfd, "\t\t\tSummarization:\n");
+    fprintf(logfd, "\t\tPass rate = %.4f%%\n", (passRate * 100));
 #endif
 
     free(bitStream);
